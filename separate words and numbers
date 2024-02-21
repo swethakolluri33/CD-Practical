@@ -1,0 +1,23 @@
+%{
+#include <stdio.h>
+#include <string.h>
+%}
+WORD    [a-zA-Z]+
+NUMBER  [0-9]+
+%%
+{WORD}  {
+            printf("Word: %s\n", yytext);
+        }
+{NUMBER} {
+            printf("Number: %s\n", yytext);
+        }
+\n|.    ; 
+%%
+int yywrap() {
+    return 1; 
+}
+int main() {
+    printf("Enter a statement for Pooja:\n");
+    yylex(); 
+    return 0;
+}
